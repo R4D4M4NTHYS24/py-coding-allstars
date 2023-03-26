@@ -2,7 +2,7 @@ from fastapi import FastAPI, BackgroundTasks, HTTPException
 from pydantic import BaseModel
 from extract import *
 import os
-from bitcoin_api import app as bitcoin_app
+
 
 
 
@@ -11,7 +11,10 @@ SECRET = os.getenv("SECRET")
 #
 app = FastAPI()
 
-app.mount("/bitcoin", bitcoin_app)
+@app.get("/bitcoin")
+async def get_bitcoin_price():
+    bitcoin_price = 60589.12 # Este es solo un ejemplo, debes implementar la lógica para obtener el precio actual
+    return {"price": bitcoin_price}
 
 class Msg(BaseModel):
     msg: str
