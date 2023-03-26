@@ -2,12 +2,16 @@ from fastapi import FastAPI, BackgroundTasks, HTTPException
 from pydantic import BaseModel
 from extract import *
 import os
+from bitcoin_api import app as bitcoin_app
+
 
 
 SECRET = os.getenv("SECRET")
 
 #
 app = FastAPI()
+
+app.mount("/bitcoin", bitcoin_app)
 
 class Msg(BaseModel):
     msg: str
