@@ -11,10 +11,6 @@ SECRET = os.getenv("SECRET")
 #
 app = FastAPI()
 
-@app.get("/bitcoin")
-async def get_bitcoin_price():
-    bitcoin_price = 60589.12 # Este es solo un ejemplo, debes implementar la lógica para obtener el precio actual
-    return {"price": bitcoin_price}
 
 class Msg(BaseModel):
     msg: str
