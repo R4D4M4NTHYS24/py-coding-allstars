@@ -2,9 +2,7 @@ from fastapi import FastAPI, BackgroundTasks, HTTPException
 from pydantic import BaseModel
 from extract import *
 import os
-
-
-
+from fastapi.middleware.cors import CORSMiddleware
 
 
 
@@ -52,4 +50,14 @@ async def demo_post(inp: Msg, background_tasks: BackgroundTasks):
     return {"message": "Success, background task started"}
     
 
+origins = [
+    "https://master.dvsj3evpic9gz.amplifyapp.com",
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
