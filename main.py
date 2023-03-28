@@ -6,11 +6,26 @@ import os
 
 
 
+
+
 SECRET = os.getenv("SECRET")
 
 #
 app = FastAPI()
 
+def get_currency_data():
+    data = {
+        "USD": 4658,
+        "EUR": 5048,
+        "JPY": 677,
+       
+    }
+    top_currencies = dict(sorted(data.items(), key=lambda x: x[1], reverse=True)[:3])
+    return top_currencies
+
+@app.get("/currencies")
+async def currencies():
+    return get_currency_data()
 
 class Msg(BaseModel):
     msg: str
