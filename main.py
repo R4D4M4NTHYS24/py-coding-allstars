@@ -51,7 +51,7 @@ async def demo_post(inp: Msg, background_tasks: BackgroundTasks):
     
 
 origins = [
-    "https://master.dvsj3evpic9gz.amplifyapp.com",
+    "https://master.dvsj3evpic9gz.amplifyapp.com", "http://localhost:4200"
 ]
 
 app.add_middleware(
